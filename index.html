@@ -1162,7 +1162,7 @@ var GALLERIES = {
 };
 var gal=document.getElementById('gal'),gStrip=document.getElementById('gStrip'),
     gTitle=document.getElementById('gTitle'),gYears=document.getElementById('gYears'),
-    gLast=null,gHover=null;
+    gLast=null;
 
 function openGal(btn){
   var d=GALLERIES[btn.dataset.gallery]; if(!d) return;
@@ -1192,16 +1192,6 @@ function closeGal(){
 }
 document.querySelectorAll('[data-gallery]').forEach(function(b){
   b.addEventListener('click',function(){openGal(b);});
-  if(fine){
-    // hover only over the school name / "View photos" - not the whole row
-    b.querySelectorAll('h3, .tl-open').forEach(function(t){
-      t.addEventListener('mouseenter',function(){
-        clearTimeout(gHover);
-        gHover=setTimeout(function(){openGal(b);},300);
-      });
-      t.addEventListener('mouseleave',function(){clearTimeout(gHover);});
-    });
-  }
 });
 function galStep(dir){
   var f=gStrip.querySelector('figure'); if(!f) return;
