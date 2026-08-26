@@ -487,6 +487,9 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
 .repo:hover{background:var(--gold);color:var(--ink)}
 .repo[aria-disabled="true"]{border-color:var(--line-strong);color:var(--chalk-dim)}
 .repo[aria-disabled="true"]:hover{background:none;color:var(--chalk-dim)}
+.repo.live{background:var(--gold);color:var(--ink)}
+.repo.live:hover{background:var(--gold-deep);color:var(--ink)}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap}
 .modal-close{position:absolute;top:10px;right:10px;z-index:2;width:44px;height:44px;
   display:flex;align-items:center;justify-content:center;background:rgba(14,26,21,.88);
   border:1px solid var(--line);color:var(--chalk);font-size:22px;line-height:1}
@@ -528,7 +531,7 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
 /* ============================================================
    CONTACT
    ============================================================ */
-.links{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-2)}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-2)}
 .link{
   display:flex;align-items:center;gap:var(--sp-2);
   border:1px solid var(--line);background:var(--ink-2);
@@ -775,12 +778,16 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
         <span class="more">View detail →</span>
       </button>
 
-      <div class="card soon rv">
+      <button class="card rv" type="button" data-cursor="Open"
+        data-title="Song Recommender" data-stack="Python · Streamlit · ML"
+        data-img="assets/songrec.jpg" data-repo="https://github.com/vimxlbxlxji/song-recommender"
+        data-live="https://song-recommender-vb.streamlit.app"
+        data-desc="Upload a photo and get song recommendations that match its mood. An image-captioning model reads the photo, the caption is scored for mood, and a nearest-neighbours model matches that mood against a dataset of roughly 114,000 real tracks with Spotify audio features — playable right in the app. Runs entirely locally, no paid APIs.">
         <span class="idx">03</span>
-        <h3>Next up</h3>
-        <span class="stack">Coming soon…</span>
-        <span class="more">In progress</span>
-      </div>
+        <h3>Song Recommender</h3>
+        <span class="stack">Python · Streamlit · ML</span>
+        <span class="more">View detail →</span>
+      </button>
 
     </div>
   </div>
@@ -802,16 +809,16 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
     <div class="feed" id="feed">
 
       <figure class="post rv" data-cat="ri">
-        <img class="post-img" src="assets/fb-1.jpg" alt="RI Football" loading="lazy">
+        <img class="post-img" src="assets/ri-football-1.jpg" alt="RI Football" loading="lazy">
       </figure>
       <figure class="post rv" data-cat="ri">
-        <img class="post-img" src="assets/fb-2.jpg" alt="RI Football" loading="lazy">
+        <img class="post-img" src="assets/ri-football-2.jpg" alt="RI Football" loading="lazy">
       </figure>
       <figure class="post rv" data-cat="ri">
-        <img class="post-img" src="assets/fb-3.jpg" alt="RI Football" loading="lazy">
+        <img class="post-img" src="assets/ri-football-3.jpg" alt="RI Football" loading="lazy">
       </figure>
       <figure class="post rv" data-cat="ri">
-        <img class="post-img" src="assets/fb-4.jpg" alt="RI Football" loading="lazy">
+        <img class="post-img" src="assets/ri-football-4.jpg" alt="RI Football" loading="lazy">
       </figure>
 
       <figure class="post rv" data-cat="nanyang">
@@ -852,6 +859,13 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
           <path d="M11 17v-3.6a2.6 2.6 0 0 1 5.2 0V17"/><line x1="11" y1="10.5" x2="11" y2="17"/>
         </svg>
         <span><b>LinkedIn</b><small>vimal-balaji</small></span>
+      </a>
+
+      <a class="link rv" href="https://github.com/vimxlbxlxji" target="_blank" rel="noopener" data-cursor="Visit">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9.2 20.6c-4.4 1.3-4.4-2.3-6.2-2.8m12.4 5.4v-3.5a3 3 0 0 0-.85-2.35c2.8-.31 5.75-1.37 5.75-6.24a4.85 4.85 0 0 0-1.35-3.35 4.5 4.5 0 0 0-.1-3.4s-1.1-.31-3.6 1.37a12.4 12.4 0 0 0-6.4 0C6.35 3.87 5.25 4.18 5.25 4.18a4.5 4.5 0 0 0-.1 3.4A4.85 4.85 0 0 0 3.8 11c0 4.83 2.95 5.89 5.75 6.24a3 3 0 0 0-.85 2.31v3.45"/>
+        </svg>
+        <span><b>GitHub</b><small>vimxlbxlxji</small></span>
       </a>
 
       <a class="link rv" href="mailto:vimalbalaji2009@gmail.com" data-cursor="Email">
@@ -900,7 +914,10 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
       <h3 id="mTitle"></h3>
       <span class="stack" id="mStack"></span>
       <p id="mDesc"></p>
-      <a class="repo" id="mRepo" href="#">Coming soon…</a>
+      <div class="modal-actions">
+        <a class="repo live" id="mLive" href="#" target="_blank" rel="noopener" style="display:none">Visit Project →</a>
+        <a class="repo" id="mRepo" href="#">Coming soon…</a>
+      </div>
     </div>
   </div>
 </div>
@@ -1213,7 +1230,8 @@ gal.addEventListener('keydown',function(e){
 var modal=document.getElementById('modal'),
     mImg=document.getElementById('mImg'),mTitle=document.getElementById('mTitle'),
     mStack=document.getElementById('mStack'),mDesc=document.getElementById('mDesc'),
-    mRepo=document.getElementById('mRepo'),last=null,hv=null;
+    mRepo=document.getElementById('mRepo'),mLive=document.getElementById('mLive'),
+    last=null,hv=null;
 
 function openModal(card){
   last=card;
@@ -1227,6 +1245,11 @@ function openModal(card){
   }else{
     mRepo.href='#'; mRepo.textContent='Coming soon…';
     mRepo.setAttribute('aria-disabled','true');
+  }
+  if(card.dataset.live){
+    mLive.href=card.dataset.live; mLive.style.display='';
+  }else{
+    mLive.href='#'; mLive.style.display='none';
   }
   modal.classList.add('show');
   document.body.style.overflow='hidden';
