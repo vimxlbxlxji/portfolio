@@ -447,8 +447,25 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
   transition:border-color .25s var(--ease),background .25s var(--ease);
   overflow:hidden;
 }
+/* faded project screenshot sits behind everything */
+.card-photo{
+  position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;
+  opacity:.24;filter:saturate(.85);
+  transition:opacity .35s var(--ease),transform .6s var(--ease);
+}
+.card:hover .card-photo,.card:focus-visible .card-photo{opacity:.4;transform:scale(1.045)}
+/* gradient keeps title/text legible over whatever the photo looks like */
+.card-veil{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(185deg,
+    rgba(14,26,21,.25) 0%,
+    rgba(14,26,21,.55) 45%,
+    rgba(14,26,21,.94) 82%);
+}
+.card .idx,.card h3,.card .stack,.card .more{position:relative;z-index:2}
 .card::after{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;
   background:radial-gradient(circle 200px at var(--cx,50%) var(--cy,50%),
              rgba(244,185,66,.16),transparent 65%);
   transition:opacity .3s var(--ease);
@@ -765,6 +782,8 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
         data-title="MindQuest" data-stack="Python · Web App"
         data-img="assets/mindquest.jpg" data-repo="https://github.com/yaushing/coursework"
         data-desc="A web application built in Python as secondary school coursework at the School of Science and Technology. Full description coming soon…">
+        <span class="card-photo" aria-hidden="true" style="background-image:url('assets/mindquest.jpg')"></span>
+        <span class="card-veil" aria-hidden="true"></span>
         <span class="idx">01</span>
         <h3>MindQuest</h3>
         <span class="stack">Python · Web App</span>
@@ -775,6 +794,8 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
         data-title="Fitnessico" data-stack="Swift · iOS"
         data-img="assets/fitnessico.jpg" data-repo=""
         data-desc="A fitness application built in Swift using Xcode. Full description coming soon…">
+        <span class="card-photo" aria-hidden="true" style="background-image:url('assets/fitnessico.jpg')"></span>
+        <span class="card-veil" aria-hidden="true"></span>
         <span class="idx">02</span>
         <h3>Fitnessico</h3>
         <span class="stack">Swift · iOS</span>
@@ -786,6 +807,8 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
         data-img="assets/songrec.jpg" data-repo="https://github.com/vimxlbxlxji/song-recommender"
         data-live="https://song-recommender-vb.streamlit.app"
         data-desc="Upload a photo and get song recommendations that match its mood. An image-captioning model reads the photo, the caption is scored for mood, and a nearest-neighbours model matches that mood against a dataset of roughly 114,000 real tracks with Spotify audio features — playable right in the app. Runs entirely locally, no paid APIs.">
+        <span class="card-photo" aria-hidden="true" style="background-image:url('assets/songrec.jpg')"></span>
+        <span class="card-veil" aria-hidden="true"></span>
         <span class="idx">03</span>
         <h3>Song Recommender</h3>
         <span class="stack">Python · Streamlit · ML</span>
@@ -796,6 +819,8 @@ button.tl-item:hover .tl-open,button.tl-item:focus-visible .tl-open{color:var(--
         data-title="Network Port Scanner" data-stack="Python · Security"
         data-img="assets/portscanner.jpg" data-repo="https://github.com/vimxlbxlxji/network-port-scanner"
         data-desc="A multithreaded TCP port scanner built in Python. It scans a target for open ports, identifies known services running on them, and attempts to grab banners for further detail — using concurrent threads to keep large scans fast.">
+        <span class="card-photo" aria-hidden="true" style="background-image:url('assets/portscanner.jpg')"></span>
+        <span class="card-veil" aria-hidden="true"></span>
         <span class="idx">04</span>
         <h3>Network Port Scanner</h3>
         <span class="stack">Python · Security</span>
